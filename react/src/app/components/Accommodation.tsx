@@ -1,8 +1,7 @@
-import type { Accommodation as AccommodationType } from './useAccommodations';
+import type { Accommodation as AccommodationType } from '../entities/Accommodation';
 
-interface AccommodationProps extends AccommodationType {
-	isAvailable: boolean;
-}
+interface AccommodationProps
+	extends Omit<AccommodationType, 'id' | 'accommodation'> {}
 
 export function Accommodation(props: AccommodationProps) {
 	const { image, name, rating, restingCapacity, isAvailable } = props;

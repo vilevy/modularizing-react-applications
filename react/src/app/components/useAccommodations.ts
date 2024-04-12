@@ -1,15 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Accommodation } from '../entities/Accommodation';
 import { getAccommodations } from '../services/get-accommodations';
-
-export type Accommodation = {
-	id: number;
-	name: string;
-	image: string;
-	restingCapacity: number;
-	rating: number;
-};
 
 export function useAccommodations() {
 	const [data, setData] = useState<Accommodation[]>([]);
@@ -18,10 +11,7 @@ export function useAccommodations() {
 		const getData = async () => {
 			const data = await getAccommodations();
 
-			const normalizedData = data.map((item) => ({
-				...item,
-				restingCapacity: Number(item.restingCapacity.split(' pessoas')[0]),
-			}));
+			const normalizedData = data.map((item) => new Accommodation(item));
 
 			setData(normalizedData);
 		};
