@@ -10,7 +10,7 @@ type ApiAccommodation = {
 	rating: number;
 };
 
-type Accommodation = {
+export type Accommodation = {
 	id: number;
 	name: string;
 	image: string;

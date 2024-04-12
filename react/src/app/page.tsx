@@ -1,4 +1,4 @@
-import { Accommodations } from './components/Accommodations';
+import { AccommodationsList } from './components/AccommodationsList';
 
 export default function Home() {
 	return (
@@ -8,7 +8,7 @@ export default function Home() {
 			</header>
 			<main className="px-4 py-8 md:py-24 md:px=24 flex-1 bg-gray-200 w-full">
 				<div className="max-w-6xl mx-auto">
-					<Accommodations />
+					<AccommodationsList />
 				</div>
 			</main>
 		</div>
