@@ -37,5 +37,7 @@ export function useAccommodations() {
 		getData();
 	}, []);
 
-	return { data };
+	const checkAvailability = (capacity: number) => capacity > 0;
+
+	return { data, checkAvailability };
 }

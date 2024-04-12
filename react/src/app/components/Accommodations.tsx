@@ -3,12 +3,12 @@
 import { useAccommodations } from './useAccommodations';
 
 export function Accommodations() {
-	const { data } = useAccommodations();
+	const { data, checkAvailability } = useAccommodations();
 
 	return (
 		<div className="flex gap-4 flex-wrap justify-center">
 			{data.map((accommodation) => {
-				const isAvailable = accommodation.restingCapacity > 0;
+				const isAvailable = checkAvailability(accommodation.restingCapacity);
 
 				return (
 					<div
