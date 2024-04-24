@@ -1,13 +1,13 @@
-export type RemoteAccommodation = {
+export type BaseAccommodation = {
 	id: number;
 	name: string;
 	image: string;
-	restingCapacity: string;
+	restingCapacity: number;
 	rating: number;
 };
 
 export class Accommodation {
-	constructor(readonly accommodation: RemoteAccommodation) {}
+	constructor(readonly accommodation: BaseAccommodation) {}
 
 	get id() {
 		return this.accommodation.id;
@@ -22,7 +22,7 @@ export class Accommodation {
 	}
 
 	get restingCapacity() {
-		return Number(this.accommodation.restingCapacity.split(' pessoas')[0]);
+		return this.accommodation.restingCapacity;
 	}
 
 	get rating() {

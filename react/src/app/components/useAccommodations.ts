@@ -1,19 +1,20 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Accommodation } from '../entities/Accommodation';
+import type { Accommodation } from '../entities/Accommodation';
 import { getAccommodations } from '../services/get-accommodations';
+import { GetAccommodationsUseCase } from '../use-cases/get-accommodations';
+
+const useCase = new GetAccommodationsUseCase(getAccommodations);
 
 export function useAccommodations() {
 	const [data, setData] = useState<Accommodation[]>([]);
 
 	useEffect(() => {
 		const getData = async () => {
-			const data = await getAccommodations();
+			const data = await useCase.execute();
 
-			const normalizedData = data.map((item) => new Accommodation(item));
-
-			setData(normalizedData);
+			setData(data);
 		};
 
 		getData();

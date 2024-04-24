@@ -1,8 +1,8 @@
-import type { RemoteAccommodation } from '../entities/Accommodation';
+import type { GetAccommodationsService } from '../use-cases/get-accommodations';
 
-export const getAccommodations = async () => {
+export const getAccommodations: GetAccommodationsService = async () => {
 	const result = await fetch('/api/accommodations');
-	const { data } = (await result.json()) as { data: RemoteAccommodation[] };
+	const { data } = await result.json();
 
 	return data;
 };
